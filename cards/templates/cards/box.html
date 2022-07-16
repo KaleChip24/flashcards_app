@@ -5,7 +5,12 @@
 <h2>{{ box_number | ordinal}} Box</h2>
 <mark>{{ object_list | Length}}</mark> Card{{ object_list | plural }} left in box.
 <hr>
-{%for card in object_list%}
+<!-- {%for card in object_list%}
 {%include "cards/card.html"%}
-{%endfor%}
+{%endfor%} this dispalys all cards on home box-->
+<!-- instead of looping through all cards in objects list 
+now directly refer to check_card -->
+{%if check_card%}
+{%include "cards/card.html" with card=check_card%}
+{%endif%}
 {%endblock content%}

@@ -5,6 +5,8 @@ from django.views.generic import (
   UpdateView,
 )
 
+import random
+
 # from .forms import CardCheckForm
 from .models import Card
 
@@ -30,4 +32,6 @@ class BoxView(CardListView):
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     context["box_number"] = self.kwargs["box_num"]
+    if self.object_list:
+      context["check_card"] = random.choice(self.object_list)
     return context
